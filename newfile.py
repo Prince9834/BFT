@@ -1,4 +1,3 @@
-
 title = "        " * 10 + "Welcome to Best Friend Test "
 print(title.upper())
 title2 = "         " * 10 + "BFT"
