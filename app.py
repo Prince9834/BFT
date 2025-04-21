@@ -7,6 +7,8 @@ html = """
 <html>
   <head>
     <title>Best Friend Test</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7442843163769118"
+     crossorigin="anonymous"></script>
   </head>
   <body>
     <h2>Best Friend Test</h2>
