@@ -1,1 +1,6 @@
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7442843163769118"
+     crossorigin="anonymous"></script>
+</head>
+
 google.com, pub-7442843163769118, DIRECT, f08c47fec0942fa0
