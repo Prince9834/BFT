@@ -1,5 +1,5 @@
 from flask import Flask 
-newfile1 = Flask(__name__)
+app = Flask(__name__)
 title = "        " * 10 + "Welcome to Best Friend Test "
 print(title.upper())
 title2 = "         " * 10 + "BFT"
