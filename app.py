@@ -1,67 +1,63 @@
-from flask import Flask 
+from flask import Flask, request, render_template_string
+
 app = Flask(__name__)
-title = "        " * 10 + "Welcome to Best Friend Test "
-print(title.upper())
-title2 = "         " * 10 + "BFT"
-print(title2.upper())
 
-print("Q1 what is your name".upper())
-n = input("write your name")
+html = """
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Best Friend Test</title>
+  </head>
+  <body>
+    <h2>Best Friend Test</h2>
+    <form method="post">
+      <label>Q1: What is your name?</label><br>
+      <input type="text" name="name"><br><br>
 
-if(n := 'Tejas Khandelwal'):
-    print("That is correct whatever your name is")
-               
-else:
-    print("kuch bhi")
-print("")              
-print("Q2 What is your age".upper())
-age = int(input("Write your age"))
+      <label>Q2: What is your age?</label><br>
+      <input type="number" name="age"><br><br>
 
-if(age < 18):
-    print("I Hope you are not lying ")
-                                     
-else:
-    print("Liar")
-print("")     
-print("Q3 Do you like movies [Give the Answer only in Yes or No] first letter capital".upper())
+      <label>Q3: Do you like movies? (Yes/No)</label><br>
+      <input type="text" name="movies"><br><br>
 
-m = input("")
+      <label>Q4: Do you like music? (Yes/No)</label><br>
+      <input type="text" name="music"><br><br>
 
-if(m=="Yes"):
-    print("good")
+      <label>Q5: Do you like me as a friend? (Yes/No)</label><br>
+      <input type="text" name="friend"><br><br>
 
-elif(m=="No"):
-    print("you dont deserve to be")
+      <input type="submit" value="Submit">
+    </form>
+    <br>
+    <div>{{ result }}</div>
+  </body>
+</html>
+"""
 
-else:
-    print("wrong input")
-print("")  
-print("Q4 DO YOU LIKE MUSIC [Give answer in Yes or No]".upper())
-music = input("Yes or No")
+@app.route('/', methods=['GET', 'POST'])
+def quiz():
+    result = ""
+    if request.method == 'POST':
+        name = request.form.get('name')
+        age = int(request.form.get('age'))
+        movies = request.form.get('movies')
+        music = request.form.get('music')
+        friend = request.form.get('friend')
 
-if(music == "Yes"):
-    print("Good,keep going")
-elif(music == "No"):
-    print("i did not know that") 
-else:
-  print("wrong output")
-print("")  
-                                                          
-print("Q6 NOW FINAL QUESTION, Is it true that you like me as a friend".upper())
+        result += f"Hello {name}<br>"
+        result += "Correct name!<br>" if name == "Tejas Khandelwal" else "Kuch bhi...<br>"
+        result += "Hope you are not lying<br>" if age < 18 else "Liar<br>"
+        result += "Good<br>" if movies == "Yes" else "You don’t deserve to be<br>"
+        result += "Good, keep going<br>" if music == "Yes" else "I did not know that<br>"
 
-f = input("Yes or No")
+        if friend == "Yes":
+            result += "CONGRATULATIONS! You are my best friend. Transfer your 80% wealth to my account<br>"
+        else:
+            result += "You broke my heart. Never talk to me again.<br>"
 
-if(f== "Yes"):
-    print("REALLY!,I did not know that              Congratulation you have qualified for my friendship     Since you are my bestfriend now transfer your 80% wealth my account     ".upper())
-elif(f == "No"):
-    print("MAN YOU BROKE MY HEART.      Never talk to me again")
-                                                                           
+        result += "<br>Thank you for taking the test!<br>This is just a joke."
 
+    return render_template_string(html, result=result)
 
-print("")
-print("Thank you for taking this test".upper())
-print("")
-print("This is just a joke, i made this because i was bored af".upper())
-print("")
-print("Good night, Shafa khaif, Khailash kher, Wish you a happy married life, Thank you".upper())
-                                                                            
+if __name__ == '__main__':
+    app.run(debug=True)
