@@ -1,2 +1,7 @@
 Flask==2.3.2
 gunicorn==21.2.0
+
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7442843163769118"
+     crossorigin="anonymous"></script>
+</head>
